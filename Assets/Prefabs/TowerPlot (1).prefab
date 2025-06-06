@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 8778239763050976188}
   m_Layer: 5
   m_Name: TowerPlot (1)
-  m_TagString: Untagged
+  m_TagString: TowerPlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -505,7 +505,10 @@ MonoBehaviour:
   towerPlaced: 0
   towerSelection: {fileID: 7574550656499528483}
   towerOptions: {fileID: 2212618298156836690}
-  tower: {fileID: 0}
+  tower1: {fileID: 0}
+  tower2: {fileID: 0}
+  tower3: {fileID: 0}
+  mc: {fileID: 0}
 --- !u!1 &5299305137032217567
 GameObject:
   m_ObjectHideFlags: 0

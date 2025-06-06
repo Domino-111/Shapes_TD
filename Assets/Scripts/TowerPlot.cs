@@ -5,6 +5,7 @@ public class TowerPlot : MonoBehaviour
     public bool towerPlaced = false;
 
     public GameObject towerSelection, towerOptions, tower1, tower2, tower3;
+    public MenuCloser mc;
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class TowerPlot : MonoBehaviour
         if (towerPlaced == false)
         {
             towerSelection.SetActive(true);
+            mc.reference = this;
         }
 
         if (towerPlaced == true)

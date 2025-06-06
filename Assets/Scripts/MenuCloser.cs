@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class MenuCloser : TowerPlot
+public class MenuCloser : MonoBehaviour
 {
     public GameObject closeButton;
+    public TowerPlot reference;
 
     void Awake()
     {
@@ -11,21 +12,25 @@ public class MenuCloser : TowerPlot
 
     void Update()
     {
-        if (towerSelection == false && towerOptions == false)
+        if (reference.towerSelection == false && reference.towerOptions == false)
         {
             closeButton.SetActive(false);
         }
 
-        if (towerSelection == true || towerOptions == true)
+        if (reference.towerSelection == true || reference.towerOptions == true)
         {
             closeButton.SetActive(true);
-            CloseMenu();
         }
+    }
+
+    public void Reference()
+    {
+
     }
 
     public void CloseMenu()
     {
-        towerSelection.SetActive(false);
-        towerOptions.SetActive(false);
+        reference.towerSelection.SetActive(false);
+        reference.towerOptions.SetActive(false);
     }
 }
