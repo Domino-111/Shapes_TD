@@ -7,6 +7,7 @@ public class Tower : MonoBehaviour
 
     private List<Enemy> enemiesInRange = new List<Enemy>();
 
+    // Create a set list of shapes a tower or enemy can be
     public enum Shape 
     { circle, 
       triangle, 
@@ -15,16 +16,7 @@ public class Tower : MonoBehaviour
 
     public Shape towerShape;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
+    // Check if a matching enemy shape is within range
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Enemy>(out Enemy combatant))
@@ -36,6 +28,7 @@ public class Tower : MonoBehaviour
         }
     }
 
+    // Check when enemies leave range
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Enemy>(out Enemy combatant))

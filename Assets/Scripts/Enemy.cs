@@ -5,9 +5,11 @@ public class Enemy : MonoBehaviour
 {
     public int health, speed;
 
+    public Transform goal;
+
     public Tower.Shape myShape;
 
-    void Start()
+    void Awake()
     {
         
     }
@@ -22,6 +24,6 @@ public class Enemy : MonoBehaviour
 
     private void Movement()
     {
-        //Vector3.MoveTowards(transform.position,);
+        Vector3.MoveTowards(transform.position, goal.position, 10000);
     }
 }

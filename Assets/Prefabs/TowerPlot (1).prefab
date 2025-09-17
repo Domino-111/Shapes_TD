@@ -394,7 +394,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -45, y: -211.5}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7451473601026915899
 CanvasRenderer:
@@ -508,7 +508,6 @@ MonoBehaviour:
   tower1: {fileID: 0}
   tower2: {fileID: 0}
   tower3: {fileID: 0}
-  mc: {fileID: 0}
 --- !u!1 &5299305137032217567
 GameObject:
   m_ObjectHideFlags: 0
