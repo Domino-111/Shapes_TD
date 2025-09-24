@@ -13,16 +13,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out Enemy combatant))
-        {
-            scorePage.SetActive(true);
-            prototype.SetActive(false);
-        }
+        scorePage.SetActive(true);
+        prototype.SetActive(false);
+        Debug.Log("Collision detected");
     }
 
     public void Restart()

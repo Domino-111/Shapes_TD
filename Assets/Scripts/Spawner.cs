@@ -23,16 +23,16 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        Instantiate(circ, spawn);
+        Instantiate(circ, spawn.position, Quaternion.identity, spawn);
 
         if (waveCounter >= 3)
         {
-            Instantiate(tri, spawn);
+            Instantiate(tri, spawn.position, Quaternion.identity, spawn);
         }
 
         if (waveCounter >= 5)
         {
-            Instantiate(hex, spawn);
+            Instantiate(hex, spawn.position, Quaternion.identity, spawn);
         }
     }
 }

@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public int damage, fireRate, boostCounter, killCount;
+    public float damage, fireRate, boostCounter, killCount;
 
     private List<Enemy> enemiesInRange = new List<Enemy>();
+
+    public Enemy enemy;
 
     // Create a set list of shapes a tower or enemy can be
     public enum Shape 
@@ -16,6 +18,14 @@ public class Tower : MonoBehaviour
 
     public Shape towerShape;
 
+    void Update()
+    {
+        if (enemiesInRange.Count>0)
+        {
+            Attack();
+        }
+    }
+
     // Check if a matching enemy shape is within range
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,6 +34,7 @@ public class Tower : MonoBehaviour
             if (combatant.myShape == towerShape)
             {
                 enemiesInRange.Add(combatant);
+                enemy = combatant;
             }
         }
     }
@@ -39,6 +50,6 @@ public class Tower : MonoBehaviour
 
     private void Attack()
     {
-        
+        enemy.health -= Time.deltaTime * damage;
     }
 }

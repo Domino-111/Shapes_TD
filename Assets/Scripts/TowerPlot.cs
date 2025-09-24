@@ -45,19 +45,22 @@ public class TowerPlot : MonoBehaviour
 
     public void Circle()
     {
-        Instantiate(tower1);
+        Instantiate(tower1, gameObject.transform.position, Quaternion.identity, gameObject.transform);
         towerPlaced = true;
+        towerSelection.SetActive(false);
     }
 
     public void Triangle()
     {
-        Instantiate(tower2);
+        Instantiate(tower2, gameObject.transform.position, Quaternion.identity, gameObject.transform);
         towerPlaced = true;
+        towerSelection.SetActive(false);
     }
 
     public void Hexagon()
     {
-        Instantiate(tower3);
+        Instantiate(tower3, gameObject.transform.position, Quaternion.identity, gameObject.transform);
         towerPlaced = true;
+        towerSelection.SetActive(false);
     }
 }

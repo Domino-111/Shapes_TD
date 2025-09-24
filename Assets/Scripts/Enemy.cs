@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
-    public int health, speed;
-
-    public Transform goal;
+    public float health, speed;
 
     public Tower.Shape myShape;
+    
+    public GameObject[] goal;
 
     void Awake()
     {
-        
+        goal = GameObject.FindGameObjectsWithTag("End");
     }
 
     void Update()
@@ -20,10 +20,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void Movement()
-    {
-        Vector3.MoveTowards(transform.position, goal.position, 10000);
+        transform.position = Vector2.MoveTowards(transform.position, goal[0].transform.position, Time.deltaTime * speed);
     }
 }
