@@ -1,10 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject tri, circ, hex;
     public Transform spawn;
-    public float timer, resetTime;
+    public float timer, resetTime, spawnRate;
     public int waveCounter;
 
     void Update()
@@ -13,7 +14,7 @@ public class Spawner : MonoBehaviour
 
         if (timer <= 0)
         {
-            Spawn();
+            StartCoroutine("Spawn");
 
             waveCounter++;
 
@@ -21,18 +22,33 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void Spawn()
+    public IEnumerator Spawn()
     {
-        Instantiate(circ, spawn.position, Quaternion.identity, spawn);
-
-        if (waveCounter >= 3)
+        for (int i = 0; i < waveCounter; i++)
         {
-            Instantiate(tri, spawn.position, Quaternion.identity, spawn);
+            Instantiate(circ, spawn.position, Quaternion.identity, spawn);
+
+            yield return new WaitForSeconds(spawnRate);
         }
 
-        if (waveCounter >= 5)
+        if (waveCounter >= 4)
         {
-            Instantiate(hex, spawn.position, Quaternion.identity, spawn);
+            for (int i = 0; i < waveCounter - 3; i++)
+            {
+                Instantiate(tri, spawn.position, Quaternion.identity, spawn);
+
+                yield return new WaitForSeconds(spawnRate);
+            }
+        }
+
+        if (waveCounter >= 7)
+        {
+            for (int i = 0; i < waveCounter - 6; i++)
+            {
+                Instantiate(hex, spawn.position, Quaternion.identity, spawn);
+
+                yield return new WaitForSeconds(spawnRate);
+            }
         }
     }
 }

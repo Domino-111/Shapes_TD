@@ -12,21 +12,12 @@ public class TowerPlot : MonoBehaviour
         towerOptions.SetActive(false);
     }
 
-    void Update()
-    {
-
-    }
-
     public void Selection()
     {
         if (towerPlaced == false)
         {
             towerSelection.SetActive(true);
-        }
-
-        if (towerPlaced == true)
-        {
-            towerSelection.SetActive(false);
+            Invoke("MenuTimer", 4f);
         }
     }
 
@@ -35,11 +26,7 @@ public class TowerPlot : MonoBehaviour
         if (towerPlaced == true)
         {
             towerOptions.SetActive(true);
-        }
-
-        if (towerPlaced == false)
-        {
-            towerOptions.SetActive(false);
+            Invoke("MenuTimer", 4f);
         }
     }
 
@@ -62,5 +49,18 @@ public class TowerPlot : MonoBehaviour
         Instantiate(tower3, gameObject.transform.position, Quaternion.identity, gameObject.transform);
         towerPlaced = true;
         towerSelection.SetActive(false);
+    }
+
+    public void Demolish()
+    {
+        Destroy(transform.GetChild(2).gameObject);
+        towerPlaced = false;
+        towerOptions.SetActive(false);
+    }
+
+    public void MenuTimer()
+    {
+        towerSelection.SetActive(false);
+        towerOptions.SetActive(false);
     }
 }

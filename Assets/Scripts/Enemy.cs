@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     
     public GameObject[] goal;
 
+
     void Awake()
     {
         goal = GameObject.FindGameObjectsWithTag("End");
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameManager.game.score++;
             Destroy(gameObject);
         }
 

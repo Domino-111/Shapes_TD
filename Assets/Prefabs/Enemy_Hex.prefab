@@ -101,11 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59d17efc0c6ea044abd2977851df13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
-  speed: 1
+  health: 3
+  speed: 0.5
+  myShape: 2
   goal:
   - {fileID: 0}
-  myShape: 2
 --- !u!60 &-5453997725783473128
 PolygonCollider2D:
   m_ObjectHideFlags: 0

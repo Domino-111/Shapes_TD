@@ -1,30 +1,31 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject prototype, scorePage;
+    public static GameManager game;
+
+    public TMP_Text scoreText;
+    public int score = 0;
 
     void Awake()
     {
-        prototype.SetActive(true);
-        scorePage.SetActive(false);
+        game = this;
     }
 
     void Update()
     {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        scorePage.SetActive(true);
-        prototype.SetActive(false);
-        Debug.Log("Collision detected");
+        UpdateScore();
     }
 
     public void Restart()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "Score: " + score.ToString();
     }
 }
