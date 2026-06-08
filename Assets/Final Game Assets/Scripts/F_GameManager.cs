@@ -8,6 +8,7 @@ public class F_GameManager : MonoBehaviour
 
     public TMP_Text scoreText;
     public int score = 0;
+    public int highScore;
 
     // <Addition: Keep track of canvases involved with the game>
     public GameObject menuPage, gamePage, scorePage, settingsPage;
@@ -37,7 +38,7 @@ public class F_GameManager : MonoBehaviour
     // Updates the score text
     public void UpdateScore()
     {
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Score:\n" + score.ToString();
     }
 
     // <Addition: Begins the game>

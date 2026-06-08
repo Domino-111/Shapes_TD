@@ -20,7 +20,7 @@ public class F_Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
-            GameManager.game.score++;
+            F_GameManager.game.score++;
             Destroy(gameObject);
         }
 
