@@ -5,33 +5,38 @@ using UnityEngine.SceneManagement;
 public class F_GameManager : MonoBehaviour
 {
     public static F_GameManager game;
+    public DataManager data;
 
-    public TMP_Text scoreText;
+    public TMP_Text scoreText, highScoreText;
     public int score = 0;
     public int highScore;
 
     // <Addition: Keep track of canvases involved with the game>
-    public GameObject menuPage, gamePage, scorePage, settingsMenuPage, settingsGamePage, instructionsPage;
+    public GameObject menuPage, gamePage, scorePage, audioSettings, instructionsPage;
 
-    public bool isPlaying = false;
+    public bool isPlaying = false, gameEnded = false, inMenu = true;
 
     void Awake()
     {
         game = this;
         isPlaying = false;
+        gameEnded = false;
+        inMenu = true;
 
         menuPage.SetActive(true);
         scorePage.SetActive(false);
         gamePage.SetActive(false);
-        settingsMenuPage.SetActive(false);
-        settingsGamePage.SetActive(false);
+        audioSettings.SetActive(false);
         instructionsPage.SetActive(false);
     }
 
     // Constantly update the score once an enemy is defeated
     void Update()
     {
-        UpdateScore();
+        if (gameEnded == true)
+        {
+            UpdateScore();
+        }
     }
 
     // Restarts the game
@@ -44,6 +49,18 @@ public class F_GameManager : MonoBehaviour
     public void UpdateScore()
     {
         scoreText.text = "Score:\n" + score.ToString();
+
+        if (highScore < score)
+        {
+            highScore = score;
+            data.SavedGame();
+            highScoreText.text = "High-Score:\n" + highScore.ToString();
+        }
+
+        else
+        {
+            highScoreText.text = "High-Score:\n" + highScore.ToString();
+        }
     }
 
     // <Addition: Begins the game>
@@ -53,34 +70,31 @@ public class F_GameManager : MonoBehaviour
         gamePage.SetActive(true);
 
         isPlaying = true;
+        inMenu = false;
     }
 
     // <Addition: Opens the settings in the menu>
-    public void OpenMenuSettings()
+    public void OpenAudioSettings()
     {
-        settingsMenuPage.SetActive(true);
+        if (inMenu == false)
+        {
+            isPlaying = false;
+            Time.timeScale = 0f;
+        }
+
+        audioSettings.SetActive(true);
     }
 
     // <Addition: Closes the settings in the menu>
-    public void CloseMenuSettings()
+    public void CloseAudioSettings()
     {
-        settingsMenuPage.SetActive(false);
-    }
+        if (inMenu == false)
+        {
+            isPlaying = true;
+            Time.timeScale = 1f;
+        }
 
-    // <Addition: Opens the settings in the game>
-    public void OpenGameSettings()
-    {
-        Time.timeScale = 0f;
-        isPlaying = false;
-        settingsGamePage.SetActive(true);
-    }
-
-    // <Addition: Closes the settings in the game>
-    public void CloseGameSettings()
-    {
-        Time.timeScale = 1f;
-        isPlaying = true;
-        settingsGamePage.SetActive(false);
+        audioSettings.SetActive(false);
     }
 
     // <Addition: Opens the instructions page>

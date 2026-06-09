@@ -6,6 +6,8 @@ public class F_TowerPlot : MonoBehaviour
 
     public GameObject towerSelection, tower1, tower2, tower3;
 
+    public AudioSource click, snap;
+
     // <Removed: towerOptions object and Options method as the demolish feature will be added into the tower selection>
 
     // Ensure the tower selection menu is not visible once the game starts 
@@ -18,6 +20,7 @@ public class F_TowerPlot : MonoBehaviour
     public void Selection()
     {
         towerSelection.SetActive(true);
+        click.Play();
         Invoke("MenuTimer", 3f);
     }
 
@@ -31,6 +34,7 @@ public class F_TowerPlot : MonoBehaviour
         }
 
         Instantiate(tower1, gameObject.transform.position, Quaternion.identity, gameObject.transform);
+        snap.Play();
         towerPlaced = true;
         towerSelection.SetActive(false);
     }
@@ -45,6 +49,7 @@ public class F_TowerPlot : MonoBehaviour
         }
 
         Instantiate(tower2, gameObject.transform.position, Quaternion.identity, gameObject.transform);
+        snap.Play();
         towerPlaced = true;
         towerSelection.SetActive(false);
     }
@@ -59,6 +64,7 @@ public class F_TowerPlot : MonoBehaviour
         }
 
         Instantiate(tower3, gameObject.transform.position, Quaternion.identity, gameObject.transform);
+        snap.Play();
         towerPlaced = true;
         towerSelection.SetActive(false);
     }

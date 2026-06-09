@@ -9,6 +9,8 @@ public class F_Enemy : MonoBehaviour
     
     public GameObject[] goal;
 
+    public AudioSource lastBreath;
+
     // Find target object to move towards before the first frame occurs
     void Awake()
     {
@@ -20,7 +22,22 @@ public class F_Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
-            F_GameManager.game.score++;
+            if (myShape == F_Tower.Shape.circle)
+            {
+                F_GameManager.game.score += 10;
+            }
+
+            if (myShape == F_Tower.Shape.triangle)
+            {
+                F_GameManager.game.score += 20;
+            }
+
+            if (myShape == F_Tower.Shape.hexagon)
+            {
+                F_GameManager.game.score += 30;
+            }
+
+            lastBreath.Play();
             Destroy(gameObject);
         }
 

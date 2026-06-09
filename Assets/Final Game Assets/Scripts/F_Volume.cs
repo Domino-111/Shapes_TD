@@ -9,6 +9,8 @@ public class F_Volume : MonoBehaviour
 
     private Slider slider;
 
+    private float volumeActual;
+
     void Awake()
     {
         slider = GetComponent<Slider>();
@@ -17,7 +19,7 @@ public class F_Volume : MonoBehaviour
     public void SetVolume(float volume)
     {
         // Translates -80 & 10 to 0 & 1 on the slider
-        float volumeActual = Mathf.Lerp(-80f, 10f, volume);
+        volumeActual = Mathf.Lerp(-60f, 0f, volume);
 
         am.SetVolume(channelName, volumeActual);
     }
