@@ -11,7 +11,7 @@ public class F_GameManager : MonoBehaviour
     public int highScore;
 
     // <Addition: Keep track of canvases involved with the game>
-    public GameObject menuPage, gamePage, scorePage, settingsPage;
+    public GameObject menuPage, gamePage, scorePage, settingsMenuPage, settingsGamePage, instructionsPage;
 
     void Awake()
     {
@@ -20,7 +20,9 @@ public class F_GameManager : MonoBehaviour
         menuPage.SetActive(true);
         scorePage.SetActive(false);
         gamePage.SetActive(false);
-        settingsPage.SetActive(false);
+        settingsMenuPage.SetActive(false);
+        settingsGamePage.SetActive(false);
+        instructionsPage.SetActive(false);
     }
 
     // Constantly update the score once an enemy is defeated
@@ -48,15 +50,41 @@ public class F_GameManager : MonoBehaviour
         gamePage.SetActive(true);
     }
 
-    // <Addition: Opens the settings menu>
-    public void OpenSettings()
+    // <Addition: Opens the settings in the menu>
+    public void OpenMenuSettings()
     {
-        settingsPage.SetActive(true);
+        settingsMenuPage.SetActive(true);
     }
 
-    // <Addition: Closes the settings menu>
-    public void CloseSettings()
+    // <Addition: Closes the settings in the menu>
+    public void CloseMenuSettings()
     {
-        settingsPage.SetActive(false);
+        settingsMenuPage.SetActive(false);
+    }
+
+    // <Addition: Opens the settings in the game>
+    public void OpenGameSettings()
+    {
+        Time.timeScale = 0f;
+        settingsGamePage.SetActive(true);
+    }
+
+    // <Addition: Closes the settings in the game>
+    public void CloseGameSettings()
+    {
+        Time.timeScale = 1f;
+        settingsGamePage.SetActive(false);
+    }
+
+    // <Addition: Opens the instructions page>
+    public void OpenInstructions()
+    {
+        instructionsPage.SetActive(true);
+    }
+
+    // <Addition: Closes the instructions page>
+    public void CloseInstructions()
+    {
+        instructionsPage.SetActive(false);
     }
 }
