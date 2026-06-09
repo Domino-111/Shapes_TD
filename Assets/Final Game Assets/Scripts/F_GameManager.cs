@@ -13,9 +13,12 @@ public class F_GameManager : MonoBehaviour
     // <Addition: Keep track of canvases involved with the game>
     public GameObject menuPage, gamePage, scorePage, settingsMenuPage, settingsGamePage, instructionsPage;
 
+    public bool isPlaying = false;
+
     void Awake()
     {
         game = this;
+        isPlaying = false;
 
         menuPage.SetActive(true);
         scorePage.SetActive(false);
@@ -48,6 +51,8 @@ public class F_GameManager : MonoBehaviour
     {
         menuPage.SetActive(false);
         gamePage.SetActive(true);
+
+        isPlaying = true;
     }
 
     // <Addition: Opens the settings in the menu>
@@ -66,6 +71,7 @@ public class F_GameManager : MonoBehaviour
     public void OpenGameSettings()
     {
         Time.timeScale = 0f;
+        isPlaying = false;
         settingsGamePage.SetActive(true);
     }
 
@@ -73,6 +79,7 @@ public class F_GameManager : MonoBehaviour
     public void CloseGameSettings()
     {
         Time.timeScale = 1f;
+        isPlaying = true;
         settingsGamePage.SetActive(false);
     }
 

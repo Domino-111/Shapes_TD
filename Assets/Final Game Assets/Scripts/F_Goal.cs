@@ -11,6 +11,8 @@ public class F_Goal : MonoBehaviour
     {
         gm.scorePage.SetActive(true);
         gm.gamePage.SetActive(false);
+        gm.isPlaying = false;
+
         Debug.Log("Collision detected");
     }
 }

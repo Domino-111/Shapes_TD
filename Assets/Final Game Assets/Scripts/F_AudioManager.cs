@@ -5,26 +5,29 @@ public class F_AudioManager : MonoBehaviour
 {
     public AudioMixer mixer;
 
-    void Start()
+    public AudioSource menuSong, gameSong;
+
+    public F_GameManager gm;
+
+    // Changes the volume
+    public void SetVolume(string channel, float volume)
     {
-        mixer.SetFloat("EffectsVolume", 0f);
+        mixer.SetFloat(channel, volume);
     }
 
-    // Adjusts the volume for everything in the game with a slider
-    public void MasterVolume()
+    void Update()
     {
+        // Checks if the game is playing and the song hasn't already started
+        if (gm.isPlaying == false && menuSong.isPlaying == false)
+        {
+            gameSong.Stop();
+            menuSong.Play();
+        }
 
-    }
-
-    // Adjusts the volume for the music in the game with a slider
-    public void MusicVolume()
-    {
-
-    }
-
-    // Adjusts the volume for the effects in the game with a slider
-    public void EffectsVolume()
-    {
-
+        if (gm.isPlaying == true && gameSong.isPlaying == false)
+        {
+            menuSong.Stop();
+            gameSong.Play();
+        }
     }
 }
