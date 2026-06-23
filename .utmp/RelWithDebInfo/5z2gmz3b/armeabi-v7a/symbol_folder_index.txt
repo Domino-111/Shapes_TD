@@ -1,0 +1,1 @@
+C:\Users\domwa\OneDrive\Documents\GitHub\Shapes_TD\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\5z2gmz3b\obj\armeabi-v7a
